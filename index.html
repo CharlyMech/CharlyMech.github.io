@@ -12,6 +12,10 @@
 			integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
 			crossorigin="anonymous"
 		/>
+		<link
+			href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
+			rel="stylesheet"
+		/>
 		<link rel="stylesheet" href="styles/index.css" />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -20,12 +24,17 @@
 			rel="stylesheet"
 		/>
 		<link
+			href="https://fonts.googleapis.com/css2?family=Fredoka&amp;display=swap"
+			rel="stylesheet"
+		/>
+		<link
 			rel="icon"
 			href="https://icongr.am/clarity/computer.svg?size=128&color=currentColor"
 		/>
+
 		<title>Carlos Sánchez Recio</title>
 	</head>
-	<body>
+	<body class="light">
 		<header>
 			<div class="row">
 				<div class="col-2 header-photo">
@@ -41,7 +50,16 @@
 					<h3 class="display-3"><b>Carlos Sánchez Recio</b></h3>
 					<h5 style="font-size: 2rem">CharlyMech</h5>
 				</div>
-				<div class="col-2 header-dark-mode">Dark Mode Toggle Switch</div>
+				<div class="col-2 header-dark-mode">
+					<!-- ! NEW -->
+					<input type="checkbox" id="toggle" />
+					<label class="toggle" for="toggle">
+						<i class="bx bxs-sun"></i>
+						<i class="bx bx-moon"></i>
+						<span class="ball"></span>
+					</label>
+					<!-- ! END NEW -->
+				</div>
 			</div>
 		</header>
 		<main>
@@ -189,4 +207,5 @@
 			<div class="wave"></div>
 		</footer>
 	</body>
+	<script src="js/scrip.js" defer></script>
 </html>
