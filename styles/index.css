@@ -122,8 +122,6 @@ header input {
 	transform: translateX(60px);
 }
 
-/* ! END NEW */
-
 main {
 	position: sticky;
 	position: fixed;
@@ -152,7 +150,7 @@ main .menu-content {
 .menu-items:hover > .menu-item:hover {
 	opacity: 1;
 	color: black;
-	font-size: clamp(3rem, 8vw, 5rem);
+	font-size: clamp(2rem, 5vw, 4rem);
 }
 
 .menu-item {
@@ -160,8 +158,47 @@ main .menu-content {
 	font-size: clamp(1rem, 3vw, 3rem);
 	display: block;
 	text-decoration: none;
+	cursor: pointer;
 	padding: clamp(0.25rem, 0.5vw, 1rem) 0rem;
 	transition: opacity 400ms ease, font-size 250ms;
+}
+
+/* 
+	Moving hand animation from: https://codepen.io/jakejarvis/pen/pBZWZw
+*/
+#moving-hand {
+	animation-name: hand-animation;
+	animation-duration: 2.5s;
+	animation-iteration-count: infinite;
+	transform-origin: 70% 70%;
+	display: inline-block;
+}
+
+@keyframes hand-animation {
+	0% {
+		transform: rotate(0deg);
+	}
+	10% {
+		transform: rotate(14deg);
+	}
+	20% {
+		transform: rotate(-8deg);
+	}
+	30% {
+		transform: rotate(14deg);
+	}
+	40% {
+		transform: rotate(-4deg);
+	}
+	50% {
+		transform: rotate(10deg);
+	}
+	60% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(0deg);
+	}
 }
 
 main #main-content {
@@ -171,6 +208,8 @@ main #main-content {
 .section-content {
 	overflow-y: scroll;
 	height: 100%;
+	padding: 5% 10% 5% 0%;
+	font-size: larger;
 }
 
 footer {
@@ -197,7 +236,7 @@ footer img {
 
 /* Waves and gradient from: https://www.codewithrandom.com/2022/08/02/gradient-background-with-waves/ */
 .wave {
-	background: rgb(255 255 255 / 25%);
+	background: rgba(0, 0, 0, 0.5);
 	border-radius: 1000% 1000% 0 0;
 	position: fixed;
 	width: 200%;
