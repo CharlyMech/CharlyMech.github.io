@@ -1,14 +1,64 @@
-:root {
-	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-	line-height: 1.5;
-	font-weight: 400;
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
+@import "tailwindcss";
 
-	color-scheme: light dark;
-	color: rgba(255, 255, 255, 0.87);
-	background-color: #222528;
+/* Default Dark Theme */
+@theme {
+	--color-primary: #dee2e6;
+	--color-primary-light: #343a40;
+	--color-secondary: #ced4da;
+	--color-secondary-light: #495057;
 
-	font-synthesis: none;
-	text-rendering: optimizeLegibility;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+	--color-accent: #42a5f5;
+	--color-accent-light: #81d4fa;
+
+	--color-background: #212529;
+	--color-surface: #343a40;
+	--color-border: #495057;
+
+	--color-muted: #6c757d;
+	--color-muted-dark: #adb5bd;
+
+	--color-text: #f8f9fa;
+	--color-text-light: #000000;
+
+	--font-sans: "Montserrat", sans-serif;
+}
+
+/* Light Theme */
+/* .light {
+	@theme {
+		--color-primary: #343a40;
+		--color-primary-light: #dee2e6;
+		--color-secondary: #495057;
+		--color-secondary-light: #e9ecef;
+
+		--color-accent: #02569b;
+		--color-accent-light: #42a5f5;
+
+		--color-background: #f8f9fa;
+		--color-surface: #ffffff;
+		--color-border: #ced4da;
+
+		--color-muted: #adb5bd;
+		--color-muted-dark: #6c757d;
+
+		--color-text: #212529;
+		--color-text-light: #ffffff;
+	}
+} */
+
+html,
+body {
+	box-sizing: border-box;
+	@apply w-dvw h-dvh m-0 p-0 overflow-x-hidden overflow-y-auto;
+	font-family: var(--font-sans);
+	background-color: var(--color-background);
+	color: var(--color-text);
+
+	transition: background-color 300ms ease-in-out, color 300ms ease-in-out;
+}
+
+* {
+	transition: background-color 300ms ease-in-out, color 300ms ease-in-out,
+		border-color 300ms ease-in-out;
 }
