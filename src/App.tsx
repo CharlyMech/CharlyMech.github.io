@@ -1,18 +1,16 @@
 import { AppRouter } from "router/AppRouter";
 import { NavigationBar } from "@components/components";
-import "./App.css";
+import { FloatingNavBarLayout } from "@layouts/FloatingNavBarLayout";
+import { BrowserRouter } from "react-router-dom";
 
 function App() {
   return (
-    <div className="container">
-      <header>
-        <NavigationBar />
-      </header>
-      <main>
+    <BrowserRouter>
+      <FloatingNavBarLayout navigation={<NavigationBar />}>
         <AppRouter />
-      </main>
-    </div>
-  )
+      </FloatingNavBarLayout>
+    </BrowserRouter>
+  );
 }
 
 export default App

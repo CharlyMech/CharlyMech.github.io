@@ -29,6 +29,9 @@
       "@pages/*": [
         "pages/*"
       ],
+      "@layouts/*": [
+        "layouts/*"
+      ],
       "@hooks/*": [
         "hooks/*"
       ],

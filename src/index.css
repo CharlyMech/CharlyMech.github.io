@@ -69,7 +69,7 @@
 html,
 body {
 	box-sizing: border-box;
-	@apply w-dvw h-dvh m-0 p-0 overflow-x-hidden overflow-y-auto;
+	@apply w-dvw h-dvh m-0 p-0 overflow-hidden;
 	font-family: "Ubuntu Mono", monospace;
 	background-color: var(--color-background);
 	color: var(--color-text);
