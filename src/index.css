@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu+Mono:wght@400;700&display=swap");
 @import "tailwindcss";
 
 /* Default Dark Theme */
@@ -10,6 +10,7 @@
 
 	--color-accent: #42a5f5;
 	--color-accent-light: #81d4fa;
+	--color-accent-dark: #02569b;
 
 	--color-background: #212529;
 	--color-surface: #343a40;
@@ -21,7 +22,25 @@
 	--color-text: #f8f9fa;
 	--color-text-light: #000000;
 
-	--font-sans: "Montserrat", sans-serif;
+	/* RGB colors to use bg opacity */
+	--color-primary-rgb: 222, 226, 230;
+	--color-primary-light-rgb: 52, 58, 64;
+
+	--color-secondary-rgb: 206, 212, 218;
+	--color-secondary-light-rgb: 73, 80, 87;
+
+	--color-accent-rgb: 66, 165, 245;
+	--color-accent-light-rgb: 129, 212, 250;
+
+	--color-background-rgb: 33, 37, 41;
+	--color-surface-rgb: 52, 58, 64;
+	--color-border-rgb: 73, 80, 87;
+
+	--color-muted-rgb: 108, 117, 125;
+	--color-muted-dark-rgb: 173, 181, 189;
+
+	--color-text-rgb: 248, 249, 250;
+	--color-text-light-rgb: 0, 0, 0;
 }
 
 /* Light Theme */
@@ -51,14 +70,9 @@ html,
 body {
 	box-sizing: border-box;
 	@apply w-dvw h-dvh m-0 p-0 overflow-x-hidden overflow-y-auto;
-	font-family: var(--font-sans);
+	font-family: "Ubuntu Mono", monospace;
 	background-color: var(--color-background);
 	color: var(--color-text);
 
 	transition: background-color 300ms ease-in-out, color 300ms ease-in-out;
-}
-
-* {
-	transition: background-color 300ms ease-in-out, color 300ms ease-in-out,
-		border-color 300ms ease-in-out;
 }
