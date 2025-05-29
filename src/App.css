@@ -1,5 +1,11 @@
-@import "tailwindcss";
+.container {
+	@apply relative h-dvh;
 
-section {
-	@apply w-full p-[32px] flex flex-col items-center;
+	& > header {
+		@apply fixed top-[0px] w-full flex items-center justify-center z-50 py-[20px];
+	}
+
+	& > main {
+		@apply absolute top-[0px] w-full h-full overflow-y-auto px-[120px] pt-[100px];
+	}
 }
