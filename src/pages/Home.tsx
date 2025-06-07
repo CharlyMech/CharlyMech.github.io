@@ -1,12 +1,21 @@
-import { Card } from "@components/components";
+import { Card, LanguageSelector, type Option as CustomSelectOption } from "@components/components";
 import { CloudArrowDownIcon, GithubLogoIcon, LinktreeLogoIcon } from "@phosphor-icons/react";
 import { AtIcon, LinkedinLogoIcon } from "@phosphor-icons/react/dist/ssr";
+import { Lang, useLangStore } from "@store/language";
+
 
 export function Home() {
+	// Define language options for CustomSelect
+	const languageOptions: CustomSelectOption[] = [
+		{ value: "en", label: "🇬🇧 English" },
+		{ value: "es", label: "🇪🇸 Español" },
+	]
+
+	const { lang, setLang } = useLangStore();
 
 	return (
 		<section className="h-full max-w-[1200px] mx-auto flex items-center justify-center">
-			<div className="grid w-full grid-cols-12 grid-rows-12 gap-4">
+			<div className="grid w-full grid-cols-12 grid-rows-12 gap-4 overflow-visible">
 				<Card className="flex flex-col justify-center items-center col-span-6 row-span-5">
 					<div className="flex flex-row items-baseline gap-4">
 						<span className="text-[40px] font-bold text-[var(--color-accent)]">Carlos</span>
@@ -19,7 +28,18 @@ export function Home() {
 					<img width={250} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10" src="/assets/img/carlos.png" alt="Carlos' profile photo" />
 				</div>
 				<Card className="flex justify-center items-center col-span-1 row-span-2">theme</Card>
-				<Card className="flex justify-center items-center col-span-2 row-span-2">lang</Card>
+				<div className="relative overflow-visible flex justify-center items-center col-span-2 row-span-2">
+					<div className="w-full h-full flex justify-center items-center">
+						<LanguageSelector
+							options={languageOptions}
+							value={lang}
+							onChange={(newLang: string) => {
+								setLang(newLang as Lang)
+							}}
+							className="w-full"
+						/>
+					</div>
+				</div>
 				<Card className="flex justify-center items-center col-span-3 row-span-10">skills accordion</Card>
 				<Card className="flex justify-center items-center col-span-3 row-span-7">abour brief</Card>
 				<Card className="flex justify-center items-center col-span-3 row-span-3">coming soon 1</Card>

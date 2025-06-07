@@ -1,0 +1,21 @@
+.customSelect {
+	@apply relative w-full;
+}
+
+.dropdownButton {
+	@apply w-full py-[5px] px-[10px] flex flex-row items-center justify-between bg-[var(--color-surface)] 
+			 rounded-[8px] border border-[var(--color-secondary-light)] cursor-pointer;
+}
+
+.dropdownButtonCaret {
+	@apply transition-transform duration-200;
+}
+
+.dropdownList {
+	@apply absolute z-20 w-full left-[0px] mt-[5px] py-[5px] overflow-auto bg-[var(--color-surface)] 
+			 border border-[var(--color-secondary-light)] rounded-[8px] max-h-[250px] focus:outline-none;
+}
+
+.dropdownListItem {
+	@apply relative select-none px-[10px] hover:bg-[var(--color-muted)] cursor-pointer text-[14px];
+}
