@@ -101,7 +101,6 @@ export default function Carousel({ technologies, category, index = 0 }: Carousel
 		width: '200px',
 		boxShadow: '0 2px 8px rgba(0, 0, 0, 0.3)',
 		transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-		cursor: 'pointer',
 	};
 
 	const iconStyle: CSSProperties = {
