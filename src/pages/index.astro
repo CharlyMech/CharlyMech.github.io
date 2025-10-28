@@ -2,7 +2,6 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import ParticleBackground from "@/components/ParticleBackground";
 import Carousel from "@/components/Carousel";
-import CareerCard from "@/components/CareerCard";
 import { techStack } from "@/data/technologies";
 import { workExperience, education } from "@/data/career";
 import { socialItems } from "@/utils/social";
@@ -13,11 +12,13 @@ import {
 	DatabaseIcon,
 	RocketLaunchIcon,
 	BriefcaseIcon,
+	GraduationCapIcon,
 } from "@phosphor-icons/react";
 import Card from "@/components/Card.astro";
 import TypewriterText from "@/components/TypewriterText";
 import { ArrowDownIcon } from "@phosphor-icons/react/dist/ssr/ArrowDown";
 import { ChartLineUpIcon } from "@phosphor-icons/react/dist/ssr/ChartLineUp";
+import Timeline from "@/components/Timeline.astro";
 
 const pageTitle = "Carlos Sánchez Recio - Desarrollador Mobile & Full Stack";
 
@@ -153,7 +154,7 @@ const typewriterTexts = [
 					<div
 						class="p-[var(--padding-sm)] flex flex-row gap-[8px] items-center justify-center"
 					>
-						<BriefcaseIcon size={24} />
+						<RocketLaunchIcon size={24} />
 						<p>Ver mis servicios</p>
 					</div>
 				</Card>
@@ -182,7 +183,7 @@ const typewriterTexts = [
 		class="section-container relative z-10 bg-shade-100/50 dark:bg-shade-800/50"
 	>
 		<div class="mx-auto w-full">
-			<div class="text-left mb-16 animate-on-scroll">
+			<div class="text-left mb-[var(--spacing-xl)] animate-on-scroll">
 				<h1 class="section-title">Mis habilidades</h1>
 				<p class="section-subtitle">
 					Tecnologías y herramientas con las que trabajo
@@ -276,9 +277,9 @@ const typewriterTexts = [
 	</section>
 
 	<section id="career" class="section-container relative z-10">
-		<div class="max-w-6xl mx-auto w-full">
-			<div class="text-center mb-16 animate-on-scroll">
-				<h2 class="section-title">Mi Trayectoria</h2>
+		<div class="mx-auto w-full">
+			<div class="text-left mb-[var(--spacing-xl)] animate-on-scroll">
+				<h2 class="section-title">Mi trayectoria</h2>
 				<p class="section-subtitle">
 					Experiencia profesional y formación académica
 				</p>
@@ -288,44 +289,24 @@ const typewriterTexts = [
 				<h3
 					class="text-3xl font-bold text-primary-500 dark:text-primary-300 mb-8 flex items-center gap-3 animate-on-scroll"
 				>
-					<RocketLaunchIcon size={32} weight="bold" />
-					Experiencia Laboral
+					<GraduationCapIcon size={32} weight="bold" />
+					Formación Académica
 				</h3>
-				<div class="space-y-6">
-					{
-						workExperience.map((item, index) => (
-							<CareerCard item={item} index={index} client:visible />
-						))
-					}
-				</div>
+
+				{/* Usando el nuevo componente Timeline */}
+				<Timeline items={education} />
 			</div>
 
-			<div>
+			<div class="mb-[var(--spacing-lg)]">
 				<h3
 					class="text-3xl font-bold text-primary-500 dark:text-primary-300 mb-8 flex items-center gap-3 animate-on-scroll"
 				>
-					<svg
-						class="w-8 h-8"
-						fill="none"
-						stroke="currentColor"
-						viewBox="0 0 24 24"
-					>
-						<path
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							stroke-width="2"
-							d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
-						></path>
-					</svg>
-					Formación Académica
+					<BriefcaseIcon size={32} weight="bold" />
+					Experiencia Laboral
 				</h3>
-				<div class="space-y-6">
-					{
-						education.map((item, index) => (
-							<CareerCard item={item} index={index} client:visible />
-						))
-					}
-				</div>
+
+				{/* Usando el nuevo componente Timeline */}
+				<Timeline items={workExperience} />
 			</div>
 		</div>
 	</section>

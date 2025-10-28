@@ -1,0 +1,161 @@
+---
+import type { CareerItem } from "@/data/career";
+import Card from "@/components/Card.astro";
+
+interface Props {
+	items: CareerItem[];
+	className?: string;
+}
+
+const { items, className = "" } = Astro.props;
+---
+
+<div class={`timeline-container w-full ${className}`}>
+	{
+		items.map((item, index) => {
+			return (
+				<div
+					class="timeline-item animate-on-scroll"
+					style={`animation-delay: ${index * 0.1}s;`}
+				>
+					<div class="timeline-line">
+						<div class="timeline-dot" />
+					</div>
+
+					<div class="timeline-content">
+						<Card
+							bgColor="var(--color-shade-800)"
+							textColor="var(--color-shade-50)"
+							padding="var(--padding-md)"
+							isHoverable={false}
+							className="timeline-card"
+						>
+							<div class="w-full h-full p-[var(--padding-md)] md:p-[var(--padding-lg)]">
+								<div class="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
+									<div class="flex-1">
+										<h3 class="text-2xl font-bold text-shade-900 dark:text-shade-50 mb-1">
+											{item.title}
+										</h3>
+										<p class="text-lg text-primary-500 dark:text-primary-300 font-semibold mb-1">
+											{item.company}
+										</p>
+									</div>
+									<div class="mt-2 md:mt-0">
+										<span class="inline-block bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-200 px-3 py-1 rounded-full text-sm font-medium">
+											{item.period}
+										</span>
+									</div>
+								</div>
+
+								<p class="text-shade-700 dark:text-shade-300 mb-4 leading-relaxed">
+									{item.description}
+								</p>
+
+								{item.technologies && item.technologies.length > 0 && (
+									<div class="flex flex-wrap gap-2">
+										{item.technologies.map((tech) => (
+											<span class="bg-shade-200 dark:bg-shade-700 text-shade-800 dark:text-shade-200 px-3 py-1 rounded text-sm font-medium">
+												{tech}
+											</span>
+										))}
+									</div>
+								)}
+							</div>
+						</Card>
+					</div>
+				</div>
+			);
+		})
+	}
+</div>
+
+<style>
+	.timeline-container {
+		position: relative;
+		padding: 0;
+	}
+
+	.timeline-item {
+		position: relative;
+		display: flex;
+		gap: 1.5rem;
+		padding-bottom: 2rem;
+	}
+
+	.timeline-item:last-child {
+		padding-bottom: 0;
+	}
+
+	.timeline-line {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		flex-shrink: 0;
+		width: 12px;
+	}
+
+	.timeline-line::before {
+		content: "";
+		position: absolute;
+		top: 6px;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 2px;
+		height: calc(100% + 2rem);
+		background-color: var(--color-primary-500);
+		z-index: 0;
+	}
+
+	:global(.dark) .timeline-line::before {
+		background-color: var(--color-primary-400);
+	}
+
+	.timeline-item:last-child .timeline-line::before {
+		height: 100%;
+	}
+	.timeline-dot {
+		width: 12px;
+		height: 12px;
+		border-radius: 50%;
+		flex-shrink: 0;
+		z-index: 1;
+		position: relative;
+		background-color: var(--color-primary-500);
+		box-shadow: 0 0 0 4px var(--color-shade-100);
+	}
+
+	:global(.dark) .timeline-dot {
+		background-color: var(--color-primary-400);
+		box-shadow: 0 0 0 4px var(--color-shade-900);
+	}
+
+	.timeline-content {
+		flex: 1;
+		min-width: 0;
+	}
+
+	@media (max-width: 768px) {
+		.timeline-item {
+			gap: 1rem;
+		}
+
+		.timeline-line {
+			width: 10px;
+		}
+
+		.timeline-dot {
+			width: 10px;
+			height: 10px;
+			box-shadow: 0 0 0 3px var(--color-shade-100);
+		}
+
+		:global(.dark) .timeline-dot {
+			box-shadow: 0 0 0 3px var(--color-shade-900);
+		}
+
+		.timeline-line::before {
+			top: 5px;
+		}
+	}
+</style>

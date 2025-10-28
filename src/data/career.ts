@@ -7,100 +7,112 @@ export interface CareerItem {
 	technologies?: string[];
 }
 
-export const careerData: CareerItem[] = [
-	// Educación
+export const education: CareerItem[] = [
 	{
 		title: "Máster en Inteligencia Artificial y Big Data",
-		company: "Centro de Formación Especializada",
-		period: "2023 - 2024",
+		company:
+			"Institut d'Ensenyaments a Distància de les Illes Balears (IEDIB)",
+		period: "2024 - 2025",
 		description:
 			"Especialización en IA y análisis de grandes volúmenes de datos. Aprendizaje profundo en machine learning, deep learning, procesamiento de lenguaje natural y arquitecturas de big data.",
 		type: "education",
 		technologies: [
 			"Python",
-			"TensorFlow",
-			"PyTorch",
-			"Apache Spark",
 			"Pandas",
+			"Matplotlib",
+			"TensorFlow",
+			"PySpark",
+			"Azure",
+			"Hive",
+			"Hadoop",
+			"DataBricks",
+			"PowerBI",
 		],
 	},
 	{
 		title: "Desarrollo de Aplicaciones Multiplataforma",
-		company: "Centro de Formación Profesional",
-		period: "2021 - 2023",
+		company: "CESUR Mallorca",
+		period: "2022 - 2024",
 		description:
-			"Formación completa en desarrollo de aplicaciones móviles y multiplataforma. Enfoque en Flutter, React Native y desarrollo de backends escalables.",
+			"Formación completa en desarrollo de aplicaciones móviles y multiplataforma. Enfoque en desarrollo Android y fundamentos de programación orientada a objetos, acceso a datos, servicios, protocolos, arquitectura de aplicaciones, etc.",
 		type: "education",
-		technologies: ["Flutter", "React Native", "Java", "Kotlin", "Swift"],
+		technologies: [
+			"Java",
+			"Kotlin",
+			"Android",
+			"Maven",
+			"Gradle",
+			"SpringBoot",
+			"Git",
+			"Github",
+		],
 	},
 	{
 		title: "Administración de Sistemas Informáticos en Red",
-		company: "Centro de Formación Profesional",
-		period: "2019 - 2021",
+		company: "IES Sa Colomina",
+		period: "2020 - 2022",
 		description:
-			"Fundamentos de redes, sistemas operativos, seguridad informática y administración de servidores. Base sólida en infraestructura IT.",
+			"Fundamentos de la computación, redes informáticas, sistemas operativos, bases de datos, seguridad informática y administración de servidores. Base sólida en infraestructura IT.",
 		type: "education",
-		technologies: ["Linux", "Windows Server", "Networking", "Docker", "AWS"],
+		technologies: ["Linux", "Windows Server", "Networking", "PHP", "MySQL"],
 	},
+];
 
-	// Experiencia Laboral (Mock - ajusta según tu experiencia real)
+export const workExperience: CareerItem[] = [
 	{
-		title: "Senior Mobile Developer",
-		company: "Tech Innovation Labs",
-		period: "2023 - Presente",
+		title: "Desarrollador Freelance Móvil y FullStack",
+		company: "Freelance",
+		period: "Sept 2025 - Presente",
 		description:
-			"Desarrollo de aplicaciones móviles multiplataforma utilizando Flutter y React Native. Liderazgo de equipo de desarrollo y arquitectura de aplicaciones escalables para más de 100K usuarios.",
+			"Desarrollo de aplicaciones móviles y web mediante tecnologías modernas y actuales, buscando siempre la mejor experiencia para el usuario y la eficiencia en el desarrollo.",
 		type: "work",
 		technologies: [
+			"Next.js",
+			"React",
+			"Astro.js",
+			"React native Expo",
 			"Flutter",
-			"React Native",
-			"Firebase",
+			"Docker",
+			"Git",
+			"Github",
+		],
+	},
+	{
+		title: "Desarrollador FullStack y Analista de datos",
+		company: "Perlatours",
+		period: "Jun 2025 - Sept 2025",
+		description:
+			"Desarrollo de aplicaciones web completas con Next.js en frontend, y python en backend. Implementación de sistemas de web scraping y data cleaning en arquitectura cloud.",
+		type: "work",
+		technologies: [
+			"Next.js",
+			"Python",
+			"Selenium",
 			"REST APIs",
 			"GraphQL",
+			"AWS",
+			"Huawei Cloud",
+			"Docker",
+			"Git",
+			"Github",
 		],
 	},
 	{
 		title: "Full Stack Developer",
-		company: "Digital Solutions Group",
-		period: "2022 - 2023",
+		company: "IT2B",
+		period: "Ene 2025 - May 2025",
 		description:
-			"Desarrollo de aplicaciones web completas con React y Next.js en frontend, y Node.js/NestJS en backend. Implementación de pipelines CI/CD y optimización de rendimiento.",
+			"Desarrollo de aplicaciones web completas Angular (versiones 14 a 19 incluyendo migraciones) en frontend, y PHP Symfony en backend. Desarrollo de BackOffice enfocado a turismo y desarrollos personalizados para clientes.",
 		type: "work",
-		technologies: [
-			"React",
-			"Next.js",
-			"NestJS",
-			"PostgreSQL",
-			"Docker",
-			"AWS",
-		],
+		technologies: ["Angular", "PHP", "Symfony", "Git", "Github"],
 	},
 	{
-		title: "Mobile & Backend Developer",
-		company: "StartUp Ventures",
-		period: "2021 - 2022",
+		title: "Full Stack Developer (Prácticas)",
+		company: "Omniaccess",
+		period: "Mar 2025 - Jun 2025",
 		description:
-			"Desarrollo de MVP para startup tecnológica. Creación de aplicación móvil con Flutter y backend con FastAPI. Gestión de bases de datos y despliegue en cloud.",
+			"Desarrollo de soluciones de conectividad para navíos. Centrado en el mantenimiento y desarrollo de APIs con NestJs/NodeJs (un poco de frontend con Vue.js). Desarrollo de POC App con Flutter para clientes de conectividad de Starlik como proyecto final de prácticas. Uso de paquetes como BLoC, Dio HTTP client, Syncfusion charts, DTOs, go_router, etc.",
 		type: "work",
-		technologies: ["Flutter", "Python", "FastAPI", "MongoDB", "Firebase"],
-	},
-	{
-		title: "Junior Developer & Systems Administrator",
-		company: "IT Services Company",
-		period: "2020 - 2021",
-		description:
-			"Administración de sistemas Linux y Windows Server. Desarrollo de scripts de automatización y mantenimiento de infraestructura de red.",
-		type: "work",
-		technologies: ["Linux", "Bash", "Python", "Docker", "Nginx"],
+		technologies: ["Vue.js", "NestJS", "Git", "Gitlab", "Docker", "Flutter"],
 	},
 ];
-
-// Ordenar por fecha (más reciente primero)
-export const sortedCareerData = [...careerData].sort((a, b) => {
-	const yearA = parseInt(a.period.split("-")[1]?.trim() || a.period);
-	const yearB = parseInt(b.period.split("-")[1]?.trim() || b.period);
-	return yearB - yearA;
-});
-
-export const workExperience = careerData.filter((item) => item.type === "work");
-export const education = careerData.filter((item) => item.type === "education");
