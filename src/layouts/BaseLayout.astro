@@ -1,0 +1,126 @@
+---
+import "@/styles/global.css";
+import NavBar from "@/components/NavBar.astro";
+import Footer from "@/components/Footer.astro";
+
+const { pageTitle } = Astro.props;
+---
+
+<html lang="es">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<meta
+			name="description"
+			content="Portfolio de Carlos Sánchez Recio - Desarrollador Mobile y Full Stack especializado en Flutter, React Native y tecnologías multiplataforma."
+		/>
+		<meta
+			name="keywords"
+			content="desarrollador, mobile, full stack, flutter, react native, portfolio"
+		/>
+		<title>{pageTitle}</title>
+
+		<!-- Theme initialization script - runs before page render to prevent flash -->
+		<script is:inline>
+			(function () {
+				function getStoredTheme() {
+					try {
+						const stored = localStorage.getItem("theme-storage");
+						if (stored) {
+							const parsed = JSON.parse(stored);
+							return parsed?.state?.mode;
+						}
+					} catch (e) {
+						console.error("Error parsing stored theme:", e);
+					}
+					return null;
+				}
+
+				function getSystemTheme() {
+					if (
+						window.matchMedia &&
+						window.matchMedia("(prefers-color-scheme: dark)").matches
+					) {
+						return "dark";
+					}
+					return "light";
+				}
+
+				const theme = getStoredTheme() || getSystemTheme();
+
+				if (theme === "dark") {
+					document.documentElement.classList.add("dark");
+				} else {
+					document.documentElement.classList.remove("dark");
+				}
+
+				if (!getStoredTheme()) {
+					try {
+						localStorage.setItem(
+							"theme-storage",
+							JSON.stringify({
+								state: { mode: theme },
+								version: 0,
+							})
+						);
+					} catch (e) {
+						console.error("Error storing theme:", e);
+					}
+				}
+			})();
+		</script>
+	</head>
+	<body
+		class="h-screen flex flex-col bg-shade-50 dark:bg-shade-900 overflow-x-hidden transition-colors duration-300"
+	>
+		<!-- Desktop Header -->
+		<header
+			class="w-full hidden md:block md:fixed md:top-0 z-30 md:flex-shrink-0"
+		>
+			<NavBar />
+		</header>
+
+		<!-- Main Content -->
+		<div
+			class="flex-1 flex flex-col w-full overflow-y-auto min-h-0 pb-16 md:pb-0"
+		>
+			<main class="flex-1 relative">
+				<slot />
+			</main>
+			<footer><Footer /></footer>
+		</div>
+
+		<!-- Mobile Bottom Navigation -->
+		<div class="md:hidden w-full fixed bottom-0 z-30">
+			<NavBar />
+		</div>
+
+		<!-- Scroll to top functionality and animations on scroll -->
+		<script>
+			// Animate elements on scroll
+			const observeElements = () => {
+				const elements = document.querySelectorAll(".animate-on-scroll");
+
+				const observer = new IntersectionObserver(
+					(entries) => {
+						entries.forEach((entry) => {
+							if (entry.isIntersecting) {
+								entry.target.classList.add("visible");
+							}
+						});
+					},
+					{
+						threshold: 0.1,
+						rootMargin: "0px 0px -50px 0px",
+					}
+				);
+
+				elements.forEach((el) => observer.observe(el));
+			};
+
+			document.addEventListener("DOMContentLoaded", observeElements);
+		</script>
+	</body>
+</html>

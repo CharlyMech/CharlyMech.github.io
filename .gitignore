@@ -1,8 +1,8 @@
 # build output
 dist/
-
-# generated types
-.astro/
+.output/
+.vercel/
+.netlify/
 
 # dependencies
 node_modules/
@@ -20,8 +20,12 @@ pnpm-debug.log*
 # macOS-specific files
 .DS_Store
 
-# jetbrains setting folder
-.idea/
-
-# VSCode setting folder
+# IDE
 .vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Astro
+.astro/

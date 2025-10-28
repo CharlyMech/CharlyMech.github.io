@@ -1,0 +1,67 @@
+---
+interface Props {
+	padding?: string;
+	bgColor?: string;
+	textColor?: string;
+	borderRadius?: string;
+	borderColor?: string;
+	borderWidth?: string;
+	isHoverable?: boolean;
+}
+
+const {
+	padding = "var(--padding-md)",
+	bgColor = "var(--color-shade-100)", // TODO: Implement theme store here <-
+	textColor = "var(--color-shade-900)", // TODO: Implement theme store here <-
+	borderRadius = "var(--rounded-sm)",
+	borderColor = "",
+	borderWidth = "",
+	isHoverable = false,
+} = Astro.props;
+
+// Build inline style string with CSS custom properties
+const cardStyle = [
+	`--card-bg: ${bgColor}`,
+	`--card-color: ${textColor}`,
+	`--card-radius: ${borderRadius}`,
+	`--card-padding: ${padding}`,
+	borderWidth &&
+		borderColor &&
+		`--card-border: ${borderWidth} solid ${borderColor}`,
+]
+	.filter(Boolean)
+	.join("; ");
+---
+
+<div class={`card ${isHoverable ? "cardHover" : ""}`} style={cardStyle}>
+	<slot />
+</div>
+
+<style is:inline>
+	.card {
+		background-color: var(--card-bg, var(--color-shade-100));
+		color: var(--card-color, var(--color-shade-900));
+		border-radius: var(--card-radius, var(--rounded-sm));
+		padding: var(--card-padding, var(--padding-md));
+		border: var(--card-border, none);
+		transition: all 0.3s ease-in-out;
+	}
+
+	.card:hover {
+		cursor: pointer;
+		box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+		background-color: var(--color-shade-00);
+		transform: scale(1.05);
+	}
+
+	.dark .card {
+		background-color: var(--card-bg, var(--color-shade-800));
+		color: var(--card-color, var(--color-shade-50));
+	}
+
+	.dark .card:hover {
+		box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+		background-color: var(--color-shade-700);
+		transform: scale(1.05);
+	}
+</style>

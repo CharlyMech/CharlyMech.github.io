@@ -12,20 +12,8 @@
     "paths": {
       "@/*": [
         "src/*"
-      ],
-      "@styles/*": [
-        "src/styles/*"
-      ],
-      "@components/*": [
-        "src/components/*"
-      ],
-      "@scripts/*": [
-        "src/scripts/*"
-      ],
-      "@layouts/*": [
-        "src/layouts/*"
       ]
-    },
+    }
     // "jsx": "react-jsx",
     // "jsxImportSource": "preact"
   }

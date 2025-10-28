@@ -1,0 +1,51 @@
+---
+import { socialItems } from "@/utils/social";
+import { ArrowSquareOutIcon } from "@phosphor-icons/react";
+---
+
+<footer class="border-t border-shade-200 dark:border-shade-700 relative z-10">
+	<div
+		class="flex flex-col items-center gap-[32px] mx-auto max-w-[1200px] px-[20px] py-[16px] text-shade-900 dark:text-shade-50"
+	>
+		<div
+			class="w-full flex flex-col md:flex-row items-center justify-between"
+		>
+			<div class="flex-1 w-full">
+				<h3 class="text-[18px] font-semibold underline mb-[4px]">
+					Mis Redes Sociales:
+				</h3>
+				<ul
+					class="w-full flex flex-row md:flex-col items-center justify-center md:items-start md:justify-start gap-[8px]"
+				>
+					{
+						socialItems.map(({ label, href, target, icon: Icon }) => {
+							return (
+								<li>
+									<a
+										href={href}
+										target={target}
+										class="flex flex-row items-center justify-center gap-[4px] px-[8px] transition-colors md:flex-row text-shade-700 dark:text-shade-300 hover:text-shade-900 dark:hover:text-shade-50"
+									>
+										<Icon size={16} />
+										<span class="inline">{label}</span>
+										<ArrowSquareOutIcon size={14} />
+									</a>
+								</li>
+							);
+						})
+					}
+				</ul>
+			</div>
+			<div class="flex-1 flex justify-center md:justify-end mt-4 md:mt-0">
+				<a href="#home" class="btn-primary flex items-center gap-2">
+					⬆️ Volver arriba
+				</a>
+			</div>
+		</div>
+	</div>
+	<p
+		class="py-[16px] text-[14px] text-center text-shade-500 dark:text-shade-400"
+	>
+		© {new Date().getFullYear()} — Carlos Sánchez Recio, @CharlyMech
+	</p>
+</footer>
