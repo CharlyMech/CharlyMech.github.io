@@ -141,8 +141,7 @@ body {
 	transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
-/* Section Container */
-
+/* Sections */
 .section-container {
 	min-height: 100vh;
 	width: 100%;
@@ -164,7 +163,6 @@ body {
 	}
 }
 
-/* Section Titles */
 .section-title {
 	font-size: var(--text-2xl);
 	font-weight: 700;
@@ -197,46 +195,6 @@ body {
 
 .dark .section-subtitle {
 	color: var(--color-shade-300);
-}
-
-/* Buttons */
-.btn-primary {
-	background-color: var(--color-primary-400);
-	color: white;
-	font-weight: 600;
-	padding: 0.75rem 1.5rem;
-	border-radius: 0.5rem;
-	transition: all 0.3s ease-in-out;
-	box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-}
-
-.btn-primary:hover {
-	background-color: var(--color-primary-500);
-	transform: scale(1.05);
-	box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-}
-
-.btn-secondary {
-	background-color: var(--color-shade-200);
-	color: var(--color-shade-900);
-	font-weight: 600;
-	padding: 0.75rem 1.5rem;
-	border-radius: 0.5rem;
-	transition: all 0.3s ease-in-out;
-}
-
-.dark .btn-secondary {
-	background-color: var(--color-shade-700);
-	color: var(--color-shade-50);
-}
-
-.btn-secondary:hover {
-	background-color: var(--color-shade-300);
-	transform: scale(1.05);
-}
-
-.dark .btn-secondary:hover {
-	background-color: var(--color-shade-600);
 }
 
 /* Utilities */

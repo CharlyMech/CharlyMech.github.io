@@ -36,26 +36,43 @@ const typewriterTexts = [
 <BaseLayout pageTitle={pageTitle}>
 	<ParticleBackground client:load />
 	<section id="home" class="section-container relative z-10 md:pt-40">
+		<div class="md:hidden w-full text-center mt-6">
+			<TypewriterText
+				prefix="Hola 👋🏻"
+				texts={typewriterTexts}
+				typingSpeed={100}
+				deletingSpeed={50}
+				pauseAfterTyping={1000}
+				pauseAfterDeleting={500}
+				className="text-4xl font-bold animate-slide-up text-shade-900 dark:text-shade-50"
+				client:load
+			/>
+		</div>
+
 		<div
 			class="flex flex-col md:flex-row justify-center items-center md:items-stretch gap-8"
 		>
-			<div class="w-full md:w-[300px]">
+			<div class="w-full md:w-[280px] flex-shrink-0">
 				<Card
 					bgColor="var(--color-shade-800)"
 					padding="var(--padding-md)"
 					borderRadius="var(--rounded-sm)"
 					isHoverable={false}
 				>
-					<img
-						style="border-radius: var(--rounded-xs)"
-						src="/src/assets/charlymech.webp"
-						alt="Carlos Sánchez Recio"
-					/>
+					<div
+						class="aspect-[3/4] overflow-hidden rounded-[var(--rounded-xs)]"
+					>
+						<img
+							src="/src/assets/carlos.webp"
+							alt="Carlos Sánchez Recio"
+							class="w-full h-full object-cover"
+						/>
+					</div>
 				</Card>
 			</div>
 
 			<div class="w-full md:flex-1 md:self-stretch">
-				<div class="w-full text-center md:text-left">
+				<div class="hidden md:block w-full text-left">
 					<TypewriterText
 						prefix="Hola 👋🏻"
 						texts={typewriterTexts}
@@ -63,13 +80,13 @@ const typewriterTexts = [
 						deletingSpeed={50}
 						pauseAfterTyping={1000}
 						pauseAfterDeleting={500}
-						className="text-4xl md:text-6xl font-bold animate-slide-up text-shade-900 dark:text-shade-50"
+						className="text-6xl font-bold animate-slide-up text-shade-900 dark:text-shade-50"
 						client:load
 					/>
 				</div>
 
 				<p
-					class="text-xl md:text-2xl text-shade-600 dark:text-shade-300 mb-6 mt-4 animate-slide-up"
+					class="text-xl md:text-2xl text-shade-600 dark:text-shade-300 mb-6 mt-4 animate-slide-up text-center md:text-left"
 					style="animation-delay: 0.2s;"
 				>
 					<span>Soy Carlos, </span>
@@ -79,7 +96,7 @@ const typewriterTexts = [
 				</p>
 
 				<p
-					class="text-lg md:text-xl text-shade-700 dark:text-shade-400 mb-8 max-w-2xl mx-auto animate-slide-up"
+					class="text-lg md:text-xl text-shade-700 dark:text-shade-400 mb-8 max-w-2xl mx-auto md:mx-0 animate-slide-up text-center md:text-left"
 					style="animation-delay: 0.4s;"
 				>
 					Especializado en tecnologías multi-plataforma y apps móviles, mi
@@ -88,7 +105,7 @@ const typewriterTexts = [
 				</p>
 
 				<div
-					class="flex justify-center gap-6 animate-slide-up"
+					class="flex justify-center md:justify-start gap-6 animate-slide-up"
 					style="animation-delay: 0.8s;"
 				>
 					{
@@ -214,7 +231,7 @@ const typewriterTexts = [
 				<Card
 					bgColor="var(--color-shade-800)"
 					textColor="var(--color-shade-50)"
-					isHoverable={true}
+					isHoverable={false}
 					className="shadow-[0_2px_8px_rgba(0,0,0,0.3)] text-center"
 				>
 					<DeviceMobileIcon
@@ -236,7 +253,7 @@ const typewriterTexts = [
 				<Card
 					bgColor="var(--color-shade-800)"
 					textColor="var(--color-shade-50)"
-					isHoverable={true}
+					isHoverable={false}
 					className="shadow-[0_2px_8px_rgba(0,0,0,0.3)] text-center"
 				>
 					<CodeIcon
@@ -258,7 +275,7 @@ const typewriterTexts = [
 				<Card
 					bgColor="var(--color-shade-800)"
 					textColor="var(--color-shade-50)"
-					isHoverable={true}
+					isHoverable={false}
 					className="shadow-[0_2px_8px_rgba(0,0,0,0.3)] text-center"
 				>
 					<DatabaseIcon
