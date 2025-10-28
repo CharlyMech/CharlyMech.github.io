@@ -13,6 +13,7 @@ import {
 	RocketLaunchIcon,
 	BriefcaseIcon,
 	GraduationCapIcon,
+	CheckIcon,
 } from "@phosphor-icons/react";
 import Card from "@/components/Card.astro";
 import TypewriterText from "@/components/TypewriterText";
@@ -73,7 +74,7 @@ const typewriterTexts = [
 				>
 					<span>Soy Carlos, </span>
 					<span class="text-gradient font-bold"
-						>Desarrollador Freelance Mobile & FullStack</span
+						>Desarrollador Freelance Mobile & FullStack.</span
 					>
 				</p>
 
@@ -143,10 +144,10 @@ const typewriterTexts = [
 			</a>
 
 			<a
-				href="#career"
+				href="#freelancing"
 				target="_self"
 				class="w-full md:w-auto flex items-center gap-2 text-shade-700 dark:text-shade-300"
-				aria-label="Ver mi trayectoria"
+				aria-label="Ver mis servicios"
 			>
 				<Card
 					bgColor="var(--color-shade-700)"
@@ -165,7 +166,6 @@ const typewriterTexts = [
 			</a>
 		</div>
 
-		<!-- Arrow que solo aparece en desktop -->
 		<div class="hidden md:block absolute bottom-[48px] animate-bounce">
 			<a
 				href="#skills"
@@ -335,10 +335,18 @@ const typewriterTexts = [
 					¿Tienes un proyecto en mente? Ofrezco servicios de desarrollo
 					móvil, web y soluciones personalizadas.
 					<br class="hidden md:block" />
-					Desde MVP hasta aplicaciones empresariales completas.
+					<span class="font-bold text-primary-500 dark:text-primary-300">
+						Desde MVP hasta aplicaciones empresariales completas.
+					</span>
 				</p>
 
-				<div class="card max-w-2xl mx-auto mb-8">
+				<Card
+					bgColor="var(--color-shade-800)"
+					textColor="var(--color-shade-50)"
+					padding="var(--padding-xl)"
+					isHoverable={false}
+					className="max-w-2xl mx-auto mb-16"
+				>
 					<h3
 						class="text-2xl font-bold text-shade-900 dark:text-shade-50 mb-4"
 					>
@@ -347,63 +355,82 @@ const typewriterTexts = [
 					<ul
 						class="text-left space-y-3 text-shade-700 dark:text-shade-300"
 					>
-						<li class="flex items-start gap-3">
-							<span
-								class="text-primary-500 dark:text-primary-300 text-xl"
-								>✓</span
-							>
+						<li class="flex items-center gap-3">
+							<CheckIcon
+								size={18}
+								weight="bold"
+								className="text-primary-500 dark:text-primary-300 flex-shrink-0"
+							/>
 							<span
 								>Desarrollo de aplicaciones móviles multiplataforma
-								(Flutter & React Native)</span
+								(Flutter & React Native).</span
 							>
 						</li>
-						<li class="flex items-start gap-3">
+						<li class="flex items-center gap-3">
+							<CheckIcon
+								size={18}
+								weight="bold"
+								className="text-primary-500 dark:text-primary-300 flex-shrink-0"
+							/>
 							<span
-								class="text-primary-500 dark:text-primary-300 text-xl"
-								>✓</span
-							>
-							<span
-								>Desarrollo web full stack con tecnologías modernas</span
+								>Desarrollo web full stack con tecnologías modernas.</span
 							>
 						</li>
-						<li class="flex items-start gap-3">
-							<span
-								class="text-primary-500 dark:text-primary-300 text-xl"
-								>✓</span
-							>
-							<span>APIs y backends escalables</span>
+						<li class="flex items-center gap-3">
+							<CheckIcon
+								size={18}
+								weight="bold"
+								className="text-primary-500 dark:text-primary-300 flex-shrink-0"
+							/>
+							<span>APIs y backends escalables.</span>
 						</li>
-						<li class="flex items-start gap-3">
-							<span
-								class="text-primary-500 dark:text-primary-300 text-xl"
-								>✓</span
-							>
-							<span>Soluciones de análisis de datos e IA</span>
+						<li class="flex items-center gap-3">
+							<CheckIcon
+								size={18}
+								weight="bold"
+								className="text-primary-500 dark:text-primary-300 flex-shrink-0"
+							/>
+							<span>Soluciones de análisis de datos e IA.</span>
 						</li>
-						<li class="flex items-start gap-3">
-							<span
-								class="text-primary-500 dark:text-primary-300 text-xl"
-								>✓</span
-							>
+						<li class="flex items-center gap-3">
+							<CheckIcon
+								size={18}
+								weight="bold"
+								className="text-primary-500 dark:text-primary-300 flex-shrink-0"
+							/>
 							<span>Consultoría técnica y arquitectura de software</span>
 						</li>
 					</ul>
+				</Card>
+
+				<div class="flex flex-col items-center justify-center w-full">
+					<a
+						href="https://linktr.ee/charlymech"
+						target="_blank"
+						class="w-full md:w-[350px]"
+					>
+						<Card
+							bgColor="var(--color-primary-400)"
+							bgColorHover="var(--color-primary-300)"
+							textColor="var(--color-shade-50)"
+							isHoverable={true}
+						>
+							<div
+								class="p-[var(--padding-sm)] flex flex-row gap-2 items-center justify-center"
+							>
+								<span class="text-base font-semibold"
+									>Ver servicios completos</span
+								>
+								<ArrowSquareOutIcon size={18} />
+							</div>
+						</Card>
+					</a>
+
+					<p class="mt-6 text-shade-600 dark:text-shade-400 text-center">
+						Visita mi página de servicios para ver proyectos, precios y
+						más información.
+					</p>
 				</div>
-
-				<a
-					href="https://linktr.ee/charlymech"
-					target="_blank"
-					class="btn-primary inline-flex items-center gap-3 text-lg px-8 py-4"
-				>
-					<RocketLaunchIcon size={24} weight="bold" />
-					Ver Servicios Completos
-					<ArrowSquareOutIcon size={20} />
-				</a>
-
-				<p class="mt-6 text-shade-600 dark:text-shade-400">
-					Visita mi página de servicios para ver proyectos, precios y más
-					información
-				</p>
 			</div>
 		</div>
 	</section>
