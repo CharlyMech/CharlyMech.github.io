@@ -1,0 +1,233 @@
+@import "tailwindcss";
+
+@theme {
+	--color-primary-50: #f2f8ff;
+	--color-primary-100: #d3e2ff;
+	--color-primary-200: #a3c7ff;
+	--color-primary-300: #6eafff;
+	--color-primary-400: #2e98ff;
+	--color-primary-500: #2980d9;
+	--color-primary-600: #2168b0;
+	--color-primary-700: #184f88;
+	--color-primary-800: #0d3760;
+	--color-primary-900: #02162d;
+
+	--color-shade-50: #f5f5f5;
+	--color-shade-100: #dedede;
+	--color-shade-200: #bfbfbf;
+	--color-shade-300: #a3a3a3;
+	--color-shade-400: #898989;
+	--color-shade-500: #707070;
+	--color-shade-600: #585858;
+	--color-shade-700: #404040;
+	--color-shade-800: #2b2b2b;
+	--color-shade-900: #151515;
+
+	--padding-xs: 2px;
+	--padding-sm: 4px;
+	--padding-md: 8px;
+	--padding-lg: 12px;
+	--padding-xl: 16px;
+	--padding-xxl: 24px;
+	--padding-xxxl: 32px;
+
+	--spacing-xs: 4px;
+	--spacing-sm: 8px;
+	--spacing-md: 16px;
+	--spacing-lg: 24px;
+	--spacing-xl: 32px;
+	--spacing-xxl: 64px;
+
+	--rounded-xs: 4px;
+	--rounded-sm: 8px;
+	--rounded-md: 16px;
+	--rounded-lg: 24px;
+	--rounded-xl: 32px;
+	--rounded-2xl: 48px;
+	--rounded-3xl: 64px;
+	--rounded-full: 9999px;
+
+	--text-xs: 12px;
+	--text-sm: 14px;
+	--text-base: 16px;
+	--text-lg: 18px;
+	--text-xl: 20px;
+	--text-2xl: 24px;
+	--text-3xl: 30px;
+	--text-4xl: 36px;
+	--text-5xl: 48px;
+
+	--animate-fade-in: fadeIn 0.6s ease-out;
+	--animate-slide-up: slideUp 0.8s ease-out;
+	--animate-slide-in-right: slideInRight 0.8s ease-out;
+	--animate-float: float 6s ease-in-out infinite;
+	--animate-carousel: carousel 40s linear infinite;
+}
+
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes slideUp {
+	0% {
+		transform: translateY(30px);
+		opacity: 0;
+	}
+	100% {
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
+
+@keyframes slideInRight {
+	0% {
+		transform: translateX(30px);
+		opacity: 0;
+	}
+	100% {
+		transform: translateX(0);
+		opacity: 1;
+	}
+}
+
+@keyframes float {
+	0%,
+	100% {
+		transform: translateY(0px);
+	}
+	50% {
+		transform: translateY(-20px);
+	}
+}
+
+@keyframes carousel {
+	0% {
+		transform: translateX(0);
+	}
+	100% {
+		transform: translateX(-50%);
+	}
+}
+
+:root {
+	--mobile-nav-h: 64px;
+}
+
+* {
+	scroll-behavior: smooth;
+}
+
+html {
+	scroll-padding-top: 5rem;
+	/* Smooth color transitions for theme switching */
+	transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+@media (min-width: 768px) {
+	html {
+		scroll-padding-top: 1rem;
+	}
+}
+
+body {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	/* Smooth color transitions for theme switching */
+	transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+/* Sections */
+.section-container {
+	min-height: 100vh;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: var(--padding-xl);
+	gap: var(--padding-md);
+	transition: background-color 0.3s ease-in-out;
+}
+
+@media (min-width: 768px) {
+	.section-container {
+		padding-left: var(--padding-xxxl);
+		padding-right: var(--padding-xxxl);
+		padding-top: var(--mobile-nav-h);
+		padding-bottom: var(--mobile-nav-h);
+	}
+}
+
+.section-title {
+	font-size: var(--text-2xl);
+	font-weight: 700;
+	margin-bottom: var(--spacing-sm);
+	color: var(--color-shade-900);
+	transition: color 0.3s ease-in-out;
+}
+
+@media (min-width: 768px) {
+	.section-title {
+		font-size: var(--text-4xl);
+	}
+}
+
+.dark .section-title {
+	color: var(--color-shade-50);
+}
+
+.section-subtitle {
+	font-size: var(--text-lg);
+	color: var(--color-shade-600);
+	transition: color 0.3s ease-in-out;
+}
+
+@media (min-width: 768px) {
+	.section-subtitle {
+		font-size: var(--text-xl);
+	}
+}
+
+.dark .section-subtitle {
+	color: var(--color-shade-300);
+}
+
+/* Utilities */
+.text-gradient {
+	background: linear-gradient(
+		to right,
+		var(--color-primary-400),
+		var(--color-primary-600)
+	);
+	background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.animate-on-scroll {
+	opacity: 0;
+	transform: translateY(2rem);
+}
+
+.animate-on-scroll.visible {
+	opacity: 1;
+	transform: translateY(0);
+	transition: all 0.7s ease-out;
+}
+
+/* Theme transition for all elements */
+* {
+	transition-property: background-color, border-color, color, fill, stroke;
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+	transition-duration: 300ms;
+}
+
+/* Prevent transition on page load */
+.no-transition * {
+	transition: none !important;
+}

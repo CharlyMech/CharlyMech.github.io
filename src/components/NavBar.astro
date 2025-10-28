@@ -1,0 +1,145 @@
+---
+import {
+	HouseIcon,
+	BriefcaseIcon,
+	CodeIcon,
+	RocketIcon,
+} from "@phosphor-icons/react";
+
+const currentHash = Astro.url.hash || "#home";
+
+const navItems = [
+	{ label: "Inicio", href: "#home", icon: HouseIcon },
+	{ label: "Habilidades", href: "#skills", icon: CodeIcon },
+	{ label: "Trayectoria", href: "#career", icon: BriefcaseIcon },
+	{ label: "Servicios", href: "#freelancing", icon: RocketIcon },
+];
+---
+
+<nav
+	class="bg-shade-100 md:bg-shade-100/80 dark:bg-shade-800 dark:md:bg-shade-800/80 h-[var(--mobile-nav-h)] py-[4px] md:py-[16px] transition-colors duration-300"
+	role="navigation"
+>
+	<div class="w-full h-full md:mt-[4px] flex items-center justify-between">
+		<div
+			class="w-full h-full px-[38px] flex flex-row items-center justify-between md:justify-start md:gap-[16px]"
+		>
+			{
+				navItems.map(({ label, href, icon: Icon }) => {
+					const isActive = currentHash === href;
+
+					return (
+						<div>
+							<a
+								href={href}
+								aria-current={isActive ? "page" : undefined}
+								class={`flex flex-col items-center justify-center gap-[4px] px-[8px] transition-colors md:flex-row ${
+									isActive
+										? "text-primary-400 dark:text-primary-200"
+										: "text-shade-600 hover:text-shade-800 dark:text-shade-300 dark:hover:text-shade-100"
+								}`}
+							>
+								<Icon
+									size={24}
+									className="block md:hidden"
+									weight={isActive ? "bold" : "regular"}
+									aria-hidden="true"
+								/>
+								<span class="hidden md:inline">{label}</span>
+							</a>
+						</div>
+					);
+				})
+			}
+		</div>
+	</div>
+</nav>
+
+<script>
+	// Smooth scroll and update active link on hash change
+	document.addEventListener("DOMContentLoaded", () => {
+		// Handle smooth scrolling for anchor links
+		document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+			anchor.addEventListener("click", (e) => {
+				e.preventDefault();
+				const href = (e.currentTarget as HTMLAnchorElement).getAttribute(
+					"href"
+				);
+				if (!href) return;
+
+				const targetId = href.replace("#", "");
+				const targetElement = document.getElementById(targetId);
+
+				if (targetElement) {
+					targetElement.scrollIntoView({
+						behavior: "smooth",
+						block: "start",
+					});
+
+					// Update URL hash without jumping
+					history.pushState(null, "", href);
+				}
+			});
+		});
+
+		// Update active link on scroll
+		const sections = document.querySelectorAll("section[id]");
+		const navLinks = document.querySelectorAll('nav a[href^="#"]');
+
+		const observerOptions = {
+			rootMargin: "-50% 0px -50% 0px",
+		};
+
+		const observer = new IntersectionObserver((entries) => {
+			entries.forEach((entry) => {
+				if (entry.isIntersecting) {
+					const id = entry.target.getAttribute("id");
+
+					// Update active state on nav links
+					navLinks.forEach((link) => {
+						const href = link.getAttribute("href");
+						const linkId = href?.replace("#", "");
+
+						if (linkId === id) {
+							link.classList.add(
+								"text-primary-400",
+								"dark:text-primary-200",
+								"font-bold"
+							);
+							link.classList.remove(
+								"text-shade-600",
+								"dark:text-shade-300"
+							);
+							link.setAttribute("aria-current", "page");
+
+							// Update icon weight for mobile
+							const icon = link.querySelector("svg");
+							if (icon) {
+								icon.setAttribute("weight", "bold");
+							}
+						} else {
+							link.classList.remove(
+								"text-primary-400",
+								"dark:text-primary-200",
+								"font-bold"
+							);
+							link.classList.add(
+								"text-shade-600",
+								"dark:text-shade-300"
+							);
+							link.removeAttribute("aria-current");
+
+							// Update icon weight for mobile
+							const icon = link.querySelector("svg");
+							if (icon) {
+								icon.setAttribute("weight", "regular");
+							}
+						}
+					});
+				}
+			});
+		}, observerOptions);
+
+		sections.forEach((section) => observer.observe(section));
+	});
+</script>
