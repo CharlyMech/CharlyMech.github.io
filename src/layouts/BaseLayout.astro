@@ -1,7 +1,6 @@
 ---
 import "@/styles/global.css";
 import NavBar from "@/components/NavBar.astro";
-import Footer from "@/components/Footer.astro";
 
 const { pageTitle } = Astro.props;
 ---
@@ -88,8 +87,16 @@ const { pageTitle } = Astro.props;
 		>
 			<main class="flex-1 relative">
 				<slot />
-			</main>
-			<footer><Footer /></footer>
+			</main><footer class="bg-transparent relative z-10">
+				<div class="mx-auto max-w-[1200px] px-[20px] py-[24px]">
+					<p
+						class="text-center text-shade-600 dark:text-shade-400 text-sm"
+					>
+						© {new Date().getFullYear()} Carlos Sánchez Recio — Todos los
+						derechos reservados
+					</p>
+				</div>
+			</footer>
 		</div>
 
 		<!-- Mobile Bottom Navigation -->
