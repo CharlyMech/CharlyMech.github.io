@@ -130,7 +130,7 @@ html {
 
 @media (min-width: 768px) {
 	html {
-		scroll-padding-top: 6rem;
+		scroll-padding-top: 1rem;
 	}
 }
 
@@ -142,6 +142,7 @@ body {
 }
 
 /* Section Container */
+
 .section-container {
 	min-height: 100vh;
 	width: 100%;
@@ -156,7 +157,10 @@ body {
 
 @media (min-width: 768px) {
 	.section-container {
-		padding: var(--padding-xxxl);
+		padding-left: var(--padding-xxxl);
+		padding-right: var(--padding-xxxl);
+		padding-top: var(--mobile-nav-h);
+		padding-bottom: var(--mobile-nav-h);
 	}
 }
 

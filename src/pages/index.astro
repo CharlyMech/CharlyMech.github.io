@@ -40,6 +40,7 @@ const typewriterTexts = [
 					bgColor="var(--color-shade-800)"
 					padding="var(--padding-md)"
 					borderRadius="var(--rounded-sm)"
+					isHoverable={false}
 				>
 					<img
 						style="border-radius: var(--rounded-xs)"
@@ -96,6 +97,7 @@ const typewriterTexts = [
 							>
 								<Card
 									bgColor="var(--color-shade-800)"
+									bgColorHover="var(--color-shade-700)"
 									textColor="var(--color-shade-100)"
 									isHoverable={true}
 								>
@@ -123,6 +125,7 @@ const typewriterTexts = [
 			>
 				<Card
 					bgColor="var(--color-primary-400)"
+					bgColorHover="var(--color-primary-300)"
 					textColor="var(--color-shade-50)"
 					isHoverable={true}
 				>
@@ -143,6 +146,7 @@ const typewriterTexts = [
 			>
 				<Card
 					bgColor="var(--color-shade-700)"
+					bgColorHover="var(--color-shade-600)"
 					textColor="var(--color-shade-50)"
 					isHoverable={true}
 				>
@@ -158,11 +162,18 @@ const typewriterTexts = [
 
 		<!-- TODO: FIX arrow over buttons up on mobile device -->
 		<div class="absolute bottom-[48px] animate-bounce">
-			<ArrowDownIcon
-				size={24}
-				weight="bold"
-				color="var(--color-primary-400)"
-			/>
+			<a
+				href="#skills"
+				target="_self"
+				class="flex items-center gap-2 text-shade-700 dark:text-shade-300"
+				aria-label="Ver mis habilidades"
+			>
+				<ArrowDownIcon
+					size={24}
+					weight="bold"
+					color="var(--color-primary-400)"
+				/>
+			</a>
 		</div>
 	</section>
 
