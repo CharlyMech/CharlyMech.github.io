@@ -25,8 +25,10 @@ const pageTitle = "Carlos Sánchez Recio - Desarrollador Mobile & Full Stack";
 const typewriterTexts = [
 	"mundo!",
 	"desarrolladores!",
-	"alienígenas!",
+	"robots!",
+	"recruiters!",
 	"jedis!",
+	"alienígenas!",
 ];
 ---
 
@@ -115,13 +117,13 @@ const typewriterTexts = [
 		</div>
 
 		<div
-			class="flex flex-wrap justify-center gap-4 mt-8 animate-slide-up"
+			class="w-full flex flex-col md:flex-row justify-center gap-4 mt-8 animate-slide-up"
 			style="animation-delay: 0.6s;"
 		>
 			<a
 				href="#career"
 				target="_self"
-				class="flex items-center gap-2 text-shade-700 dark:text-shade-300"
+				class="w-full md:w-auto flex items-center gap-2 text-shade-700 dark:text-shade-300"
 				aria-label="Ver mi trayectoria"
 			>
 				<Card
@@ -129,6 +131,7 @@ const typewriterTexts = [
 					bgColorHover="var(--color-primary-300)"
 					textColor="var(--color-shade-50)"
 					isHoverable={true}
+					className="w-full"
 				>
 					<div
 						class="p-[var(--padding-sm)] flex flex-row gap-[8px] items-center justify-center"
@@ -142,7 +145,7 @@ const typewriterTexts = [
 			<a
 				href="#career"
 				target="_self"
-				class="flex items-center gap-2 text-shade-700 dark:text-shade-300"
+				class="w-full md:w-auto flex items-center gap-2 text-shade-700 dark:text-shade-300"
 				aria-label="Ver mi trayectoria"
 			>
 				<Card
@@ -150,6 +153,7 @@ const typewriterTexts = [
 					bgColorHover="var(--color-shade-600)"
 					textColor="var(--color-shade-50)"
 					isHoverable={true}
+					className="w-full"
 				>
 					<div
 						class="p-[var(--padding-sm)] flex flex-row gap-[8px] items-center justify-center"
@@ -161,8 +165,8 @@ const typewriterTexts = [
 			</a>
 		</div>
 
-		<!-- TODO: FIX arrow over buttons up on mobile device -->
-		<div class="absolute bottom-[48px] animate-bounce">
+		<!-- Arrow que solo aparece en desktop -->
+		<div class="hidden md:block absolute bottom-[48px] animate-bounce">
 			<a
 				href="#skills"
 				target="_self"
@@ -293,7 +297,6 @@ const typewriterTexts = [
 					Formación Académica
 				</h3>
 
-				{/* Usando el nuevo componente Timeline */}
 				<Timeline items={education} />
 			</div>
 
@@ -305,7 +308,6 @@ const typewriterTexts = [
 					Experiencia Laboral
 				</h3>
 
-				{/* Usando el nuevo componente Timeline */}
 				<Timeline items={workExperience} />
 			</div>
 		</div>
