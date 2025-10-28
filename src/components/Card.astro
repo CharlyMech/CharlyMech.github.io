@@ -7,6 +7,7 @@ interface Props {
 	borderColor?: string;
 	borderWidth?: string;
 	isHoverable?: boolean;
+	className?: string;
 }
 
 const {
@@ -17,6 +18,7 @@ const {
 	borderColor = "",
 	borderWidth = "",
 	isHoverable = false,
+	className = "",
 } = Astro.props;
 
 // Build inline style string with CSS custom properties
@@ -33,7 +35,10 @@ const cardStyle = [
 	.join("; ");
 ---
 
-<div class={`card ${isHoverable ? "cardHover" : ""}`} style={cardStyle}>
+<div
+	class={`card ${isHoverable ? "cardHover" : ""} ${className}`}
+	style={cardStyle}
+>
 	<slot />
 </div>
 

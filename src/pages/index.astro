@@ -172,7 +172,7 @@ const typewriterTexts = [
 	>
 		<div class="mx-auto w-full">
 			<div class="text-left mb-16 animate-on-scroll">
-				<h1 class="section-title">Mis Habilidades</h1>
+				<h1 class="section-title">Mis habilidades</h1>
 				<p class="section-subtitle">
 					Tecnologías y herramientas con las que trabajo
 				</p>
@@ -195,7 +195,12 @@ const typewriterTexts = [
 			<div
 				class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6 animate-on-scroll"
 			>
-				<div class="card text-center">
+				<Card
+					bgColor="var(--color-shade-800)"
+					textColor="var(--color-shade-50)"
+					isHoverable={true}
+					className="shadow-[0_2px_8px_rgba(0,0,0,0.3)] text-center"
+				>
 					<DeviceMobileIcon
 						size={48}
 						weight="bold"
@@ -208,10 +213,16 @@ const typewriterTexts = [
 					</h3>
 					<p class="text-shade-600 dark:text-shade-400">
 						Experto en Flutter y React Native para crear apps
-						multiplataforma de alto rendimiento
+						multiplataforma de alto rendimiento.
 					</p>
-				</div>
-				<div class="card text-center">
+				</Card>
+
+				<Card
+					bgColor="var(--color-shade-800)"
+					textColor="var(--color-shade-50)"
+					isHoverable={true}
+					className="shadow-[0_2px_8px_rgba(0,0,0,0.3)] text-center"
+				>
 					<CodeIcon
 						size={48}
 						weight="bold"
@@ -223,11 +234,17 @@ const typewriterTexts = [
 						Full Stack
 					</h3>
 					<p class="text-shade-600 dark:text-shade-400">
-						Desarrollo completo desde frontend con React hasta backend
-						robusto con Node.js y Python
+						Desarrollo completo desde frontend con React o Angular hasta
+						backend robusto con Node.js o Python.
 					</p>
-				</div>
-				<div class="card text-center">
+				</Card>
+
+				<Card
+					bgColor="var(--color-shade-800)"
+					textColor="var(--color-shade-50)"
+					isHoverable={true}
+					className="shadow-[0_2px_8px_rgba(0,0,0,0.3)] text-center"
+				>
 					<DatabaseIcon
 						size={48}
 						weight="bold"
@@ -240,9 +257,9 @@ const typewriterTexts = [
 					</h3>
 					<p class="text-shade-600 dark:text-shade-400">
 						Especialización en Big Data e Inteligencia Artificial para
-						soluciones inteligentes
+						soluciones inteligentes y visualización de datos.
 					</p>
-				</div>
+				</Card>
 			</div>
 		</div>
 	</section>
