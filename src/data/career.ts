@@ -23,6 +23,7 @@ export const education: CareerItem[] = [
 			"TensorFlow",
 			"PySpark",
 			"Azure",
+			"MongoDB",
 			"Hive",
 			"Hadoop",
 			"DataBricks",
@@ -113,6 +114,14 @@ export const workExperience: CareerItem[] = [
 		description:
 			"Desarrollo de soluciones de conectividad para navíos. Centrado en el mantenimiento y desarrollo de APIs con NestJs/NodeJs (un poco de frontend con Vue.js). Desarrollo de POC App con Flutter para clientes de conectividad de Starlik como proyecto final de prácticas. Uso de paquetes como BLoC, Dio HTTP client, Syncfusion charts, DTOs, go_router, etc.",
 		type: "work",
-		technologies: ["Vue.js", "NestJS", "Git", "Gitlab", "Docker", "Flutter"],
+		technologies: [
+			"Vue.js",
+			"NestJS",
+			"REST APIs",
+			"Git",
+			"Gitlab",
+			"Docker",
+			"Flutter",
+		],
 	},
 ];

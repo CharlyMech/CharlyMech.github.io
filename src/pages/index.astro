@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import ParticleBackground from "@/components/ParticleBackground";
 import Carousel from "@/components/Carousel";
@@ -20,6 +21,8 @@ import TypewriterText from "@/components/TypewriterText";
 import { ArrowDownIcon } from "@phosphor-icons/react/dist/ssr/ArrowDown";
 import { ChartLineUpIcon } from "@phosphor-icons/react/dist/ssr/ChartLineUp";
 import Timeline from "@/components/Timeline.astro";
+
+import carlosImage from "@/assets/carlos.webp";
 
 const pageTitle = "Carlos Sánchez Recio - Desarrollador Mobile & Full Stack";
 
@@ -62,10 +65,14 @@ const typewriterTexts = [
 					<div
 						class="aspect-[3/4] overflow-hidden rounded-[var(--rounded-xs)]"
 					>
-						<img
-							src="/src/assets/carlos.webp"
+						<Image
+							src={carlosImage}
 							alt="Carlos Sánchez Recio"
 							class="w-full h-full object-cover"
+							widths={[280, 560, 840]}
+							sizes="(max-width: 768px) 100vw, 280px"
+							loading="eager"
+							format="webp"
 						/>
 					</div>
 				</Card>
