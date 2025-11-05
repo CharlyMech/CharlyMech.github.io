@@ -11,8 +11,6 @@ interface CarouselProps {
 }
 
 export default function Carousel({ technologies, category, index = 0 }: CarouselProps) {
-
-	// Duplicamos los elementos para asegurar un loop suave
 	const duplicatedItems = technologies.length < 5
 		? [...technologies, ...technologies, ...technologies, ...technologies]
 		: [...technologies, ...technologies, ...technologies];

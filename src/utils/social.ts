@@ -1,8 +1,6 @@
 /**
  * Social Links Configuration
- * Lista de enlaces a redes sociales y sitios externos
  */
-
 import {
 	GithubLogoIcon,
 	LinkedinLogoIcon,

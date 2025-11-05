@@ -35,7 +35,6 @@ export default function TypewriterText({
 
 		const currentFullText = texts[currentTextIndex];
 
-		// Si está en pausa, no hacer nada
 		if (isPaused) {
 			const pauseDuration = isDeleting ? pauseAfterDeleting : pauseAfterTyping;
 			const pauseTimer = setTimeout(() => {
@@ -45,7 +44,6 @@ export default function TypewriterText({
 			return () => clearTimeout(pauseTimer);
 		}
 
-		// Si está escribiendo
 		if (!isDeleting && currentText !== currentFullText) {
 			const typingTimer = setTimeout(() => {
 				setCurrentText(currentFullText.slice(0, currentText.length + 1));
@@ -54,14 +52,12 @@ export default function TypewriterText({
 			return () => clearTimeout(typingTimer);
 		}
 
-		// Si terminó de escribir, pausar antes de borrar
 		if (!isDeleting && currentText === currentFullText) {
 			setIsPaused(true);
 			setIsDeleting(true);
 			return;
 		}
 
-		// Si está borrando
 		if (isDeleting && currentText !== '') {
 			const deletingTimer = setTimeout(() => {
 				setCurrentText(currentText.slice(0, -1));
@@ -70,7 +66,6 @@ export default function TypewriterText({
 			return () => clearTimeout(deletingTimer);
 		}
 
-		// Si terminó de borrar, pausar antes de pasar al siguiente texto
 		if (isDeleting && currentText === '') {
 			setIsPaused(true);
 			setIsDeleting(false);
