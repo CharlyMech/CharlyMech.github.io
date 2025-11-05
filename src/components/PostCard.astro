@@ -1,0 +1,57 @@
+---
+import Card from "./Card.astro";
+import { CalendarIcon, ArrowRightIcon } from "@phosphor-icons/react/dist/ssr";
+
+interface Props {
+	title: string;
+	briefDescription: string;
+	postDate: Date;
+	slug: string;
+}
+
+const { title, briefDescription, postDate, slug } = Astro.props;
+
+const formattedDate = new Intl.DateTimeFormat("es-ES", {
+	year: "numeric",
+	month: "long",
+	day: "numeric",
+}).format(postDate);
+---
+
+<Card
+	bgColor="var(--color-shade-800)"
+	textColor="var(--color-shade-50)"
+	isHoverable={true}
+	className="h-full flex flex-col"
+>
+	<div class="p-6 flex flex-col flex-1">
+		<div
+			class="flex items-center gap-2 text-shade-500 dark:text-shade-400 text-sm mb-3"
+		>
+			<CalendarIcon size={16} />
+			<time datetime={postDate.toISOString()}>
+				{formattedDate}
+			</time>
+		</div>
+
+		<a href={`/freelance/posts/${slug}`}>
+			<h3
+				class="text-2xl font-bold text-shade-900 dark:text-shade-50 mb-3 hover:text-primary-400 dark:hover:text-primary-300 transition-colors"
+			>
+				{title}
+			</h3>
+		</a>
+
+		<p class="text-shade-600 dark:text-shade-400 mb-4 flex-1">
+			{briefDescription}
+		</p>
+
+		<a
+			href={`/freelance/posts/${slug}`}
+			class="flex items-center gap-2 text-primary-400 dark:text-primary-300 hover:gap-3 transition-all font-semibold"
+		>
+			Leer más
+			<ArrowRightIcon size={20} weight="bold" />
+		</a>
+	</div>
+</Card>

@@ -1,0 +1,108 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+import { CalendarIcon, ArrowLeftIcon } from "@phosphor-icons/react/dist/ssr";
+import Card from "@/components/Card.astro";
+
+export async function getStaticPaths() {
+	const posts = await getCollection("posts");
+	return posts.map((post) => ({
+		params: { slug: post.slug },
+		props: { post },
+	}));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+const formattedDate = new Intl.DateTimeFormat("es-ES", {
+	year: "numeric",
+	month: "long",
+	day: "numeric",
+}).format(post.data.postDate);
+---
+
+<BaseLayout pageTitle={`${post.data.title} - Blog`}>
+	<section class="section-container relative z-10">
+		<div class="w-full max-w-4xl mx-auto">
+			<a
+				href="/freelance/posts"
+				class="inline-flex items-center gap-2 text-primary-400 dark:text-primary-300 hover:underline mb-8 animate-on-scroll"
+			>
+				<ArrowLeftIcon size={20} />
+				Volver al blog
+			</a>
+
+			<article class="animate-on-scroll" style="animation-delay: 0.1s;">
+				<header class="mb-8">
+					<h1
+						class="text-4xl md:text-5xl font-bold text-shade-900 dark:text-shade-50 mb-4"
+					>
+						{post.data.title}
+					</h1>
+
+					<div
+						class="flex items-center gap-2 text-shade-600 dark:text-shade-400"
+					>
+						<CalendarIcon size={20} />
+						<time datetime={post.data.postDate.toISOString()}>
+							{formattedDate}
+						</time>
+					</div>
+
+					<p class="text-xl text-shade-700 dark:text-shade-300 mt-4">
+						{post.data.briefDescription}
+					</p>
+				</header>
+
+				<Card
+					bgColor="var(--color-shade-100)"
+					textColor="var(--color-shade-900)"
+				>
+					<div class="prose prose-lg dark:prose-invert max-w-none p-8">
+						<Content />
+					</div>
+				</Card>
+			</article>
+		</div>
+	</section>
+</BaseLayout>
+
+<style is:global>
+	.prose h1 {
+		@apply text-3xl font-bold mt-8 mb-4;
+	}
+	.prose h2 {
+		@apply text-2xl font-bold mt-6 mb-3;
+	}
+	.prose h3 {
+		@apply text-xl font-bold mt-4 mb-2;
+	}
+	.prose p {
+		@apply mb-4 leading-relaxed;
+	}
+	.prose ul {
+		@apply list-disc list-inside mb-4;
+	}
+	.prose ol {
+		@apply list-decimal list-inside mb-4;
+	}
+	.prose li {
+		@apply mb-2;
+	}
+	.prose code {
+		@apply bg-shade-200 dark:bg-shade-700 px-2 py-1 rounded text-sm;
+	}
+	.prose pre {
+		@apply bg-shade-200 dark:bg-shade-700 p-4 rounded-lg overflow-x-auto mb-4;
+	}
+	.prose a {
+		@apply text-primary-400 hover:text-primary-300 underline;
+	}
+	.prose img {
+		@apply rounded-lg my-6;
+	}
+	.prose blockquote {
+		@apply border-l-4 border-primary-400 pl-4 italic my-4;
+	}
+</style>

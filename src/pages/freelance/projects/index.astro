@@ -1,0 +1,58 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+import ProjectCard from "@/components/ProjectCard.astro";
+
+// Obtener y ordenar proyectos
+const projects = await getCollection("projects");
+
+const order = { developing: 0, paused: 1, finished: 2 };
+
+const sortedProjects = projects.sort(
+	(a, b) => order[a.data.status] - order[b.data.status]
+);
+---
+
+<BaseLayout pageTitle="Proyectos - Carlos Sánchez Recio">
+	<section class="section-container relative z-10">
+		<div class="w-full">
+			<div class="text-center mb-12 animate-on-scroll">
+				<h1 class="section-title">Mis Proyectos</h1>
+				<p class="section-subtitle">
+					Portfolio completo de proyectos desarrollados
+				</p>
+			</div>
+
+			{
+				sortedProjects.length === 0 ? (
+					<div class="text-center py-16">
+						<p class="text-xl text-shade-600 dark:text-shade-400">
+							Aún no hay proyectos publicados. ¡Pronto habrá contenido
+							aquí!
+						</p>
+					</div>
+				) : (
+					<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+						{sortedProjects.map((project: any, index: any) => (
+							<div
+								class="animate-on-scroll"
+								style={`animation-delay: ${index * 0.05}s;`}
+							>
+								<ProjectCard
+									title={project.data.title}
+									briefDescription={project.data.briefDescription}
+									imageUrl={project.data.imageUrl}
+									stack={project.data.stack}
+									status={project.data.status}
+									repoUrl={project.data.repoUrl}
+									deployUrl={project.data.deployUrl}
+									slug={project.slug}
+								/>
+							</div>
+						))}
+					</div>
+				)
+			}
+		</div>
+	</section>
+</BaseLayout>

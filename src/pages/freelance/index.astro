@@ -1,0 +1,222 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+import Carousel from "@/components/Carousel";
+import ProjectCard from "@/components/ProjectCard.astro";
+import PostCard from "@/components/PostCard.astro";
+import ContactForm from "@/components/ContactForm";
+import {
+	BriefcaseIcon,
+	CodeIcon,
+	NewspaperIcon,
+} from "@phosphor-icons/react/dist/ssr";
+
+const allProjects = await getCollection("projects");
+const allPosts = await getCollection("posts");
+
+// Seleccionar hasta 10 proyectos aleatorios
+const featuredProjects = allProjects
+	.sort(() => Math.random() - 0.5)
+	.slice(0, Math.min(10, allProjects.length));
+
+// Seleccionar hasta 10 posts aleatorios, ordenados por fecha
+const featuredPosts = allPosts
+	.sort(
+		(a: any, b: any) => b.data.postDate.getTime() - a.data.postDate.getTime()
+	)
+	.slice(0, Math.min(10, allPosts.length));
+
+const services = [
+	{
+		title: "Desarrollo de Apps Móviles",
+		description:
+			"Aplicaciones nativas y multiplataforma con Flutter y React Native para iOS y Android.",
+		icon: "mobile",
+	},
+	{
+		title: "Desarrollo Web Full Stack",
+		description:
+			"Sitios web y aplicaciones completas con React, Next.js, Angular y backends robustos.",
+		icon: "web",
+	},
+	{
+		title: "APIs y Backend",
+		description:
+			"Desarrollo de APIs REST, GraphQL y sistemas backend escalables con Node.js y Python.",
+		icon: "backend",
+	},
+	{
+		title: "Soluciones de Data & IA",
+		description:
+			"Análisis de datos, machine learning y soluciones de inteligencia artificial.",
+		icon: "data",
+	},
+	{
+		title: "Consultoría Técnica",
+		description:
+			"Asesoramiento en arquitectura de software, mejores prácticas y stack tecnológico.",
+		icon: "consulting",
+	},
+	{
+		title: "MVP y Prototipos",
+		description:
+			"Desarrollo rápido de productos mínimos viables para validar ideas de negocio.",
+		icon: "mvp",
+	},
+];
+---
+
+<BaseLayout pageTitle="Servicios Freelance - Carlos Sánchez Recio">
+	<!-- Hero Section -->
+	<section class="section-container relative z-10">
+		<div class="max-w-4xl mx-auto text-center">
+			<div class="mb-6 animate-on-scroll">
+				<BriefcaseIcon
+					size={64}
+					weight="bold"
+					className="mx-auto text-primary-500 dark:text-primary-300 animate-float"
+				/>
+			</div>
+
+			<h1
+				class="text-4xl md:text-6xl font-bold text-shade-900 dark:text-shade-50 mb-6 animate-on-scroll"
+			>
+				Servicios Freelance
+			</h1>
+
+			<p
+				class="text-xl md:text-2xl text-shade-700 dark:text-shade-300 mb-8 animate-on-scroll"
+				style="animation-delay: 0.2s;"
+			>
+				Soluciones tecnológicas personalizadas para impulsar tu proyecto
+			</p>
+		</div>
+	</section>
+
+	<!-- Servicios -->
+	<section
+		class="section-container relative z-10 bg-shade-100/50 dark:bg-shade-800/50"
+	>
+		<div class="w-full">
+			<h2 class="section-title mb-12 text-center animate-on-scroll">
+				¿Qué puedo hacer por ti?
+			</h2>
+
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+				{
+					services.map((service, index) => (
+						<div
+							class="p-6 bg-shade-800 rounded-lg shadow-lg animate-on-scroll"
+							style={`animation-delay: ${index * 0.1}s;`}
+						>
+							<h3 class="text-xl font-bold text-shade-50 mb-3">
+								{service.title}
+							</h3>
+							<p class="text-shade-400">{service.description}</p>
+						</div>
+					))
+				}
+			</div>
+		</div>
+	</section>
+
+	<!-- Proyectos Destacados -->
+	{
+		featuredProjects.length > 0 && (
+			<section class="section-container relative z-10">
+				<div class="w-full">
+					<div class="flex items-center justify-between mb-12 animate-on-scroll">
+						<div>
+							<h2 class="section-title mb-0">Proyectos Destacados</h2>
+							<p class="section-subtitle">
+								Algunos de mis trabajos recientes
+							</p>
+						</div>
+						<a
+							href="/freelance/projects"
+							class="text-primary-400 dark:text-primary-300 hover:underline font-semibold flex items-center gap-2"
+						>
+							Ver todos
+							<CodeIcon size={20} />
+						</a>
+					</div>
+
+					<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+						{featuredProjects.map((project: any, index: any) => (
+							<div
+								class="animate-on-scroll"
+								style={`animation-delay: ${index * 0.1}s;`}
+							>
+								<ProjectCard
+									title={project.data.title}
+									briefDescription={project.data.briefDescription}
+									imageUrl={project.data.imageUrl}
+									stack={project.data.stack}
+									status={project.data.status}
+									repoUrl={project.data.repoUrl}
+									deployUrl={project.data.deployUrl}
+									slug={project.slug}
+								/>
+							</div>
+						))}
+					</div>
+				</div>
+			</section>
+		)
+	}
+
+	<!-- Posts Recientes -->
+	{
+		featuredPosts.length > 0 && (
+			<section class="section-container relative z-10 bg-shade-100/50 dark:bg-shade-800/50">
+				<div class="w-full">
+					<div class="flex items-center justify-between mb-12 animate-on-scroll">
+						<div>
+							<h2 class="section-title mb-0">Posts Recientes</h2>
+							<p class="section-subtitle">Últimas publicaciones</p>
+						</div>
+						<a
+							href="/freelance/posts"
+							class="text-primary-400 dark:text-primary-300 hover:underline font-semibold flex items-center gap-2"
+						>
+							Ver todos
+							<NewspaperIcon size={20} />
+						</a>
+					</div>
+
+					<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+						{featuredPosts.map((post: any, index: any) => (
+							<div
+								class="animate-on-scroll"
+								style={`animation-delay: ${index * 0.1}s;`}
+							>
+								<PostCard
+									title={post.data.title}
+									briefDescription={post.data.briefDescription}
+									postDate={post.data.postDate}
+									slug={post.slug}
+								/>
+							</div>
+						))}
+					</div>
+				</div>
+			</section>
+		)
+	}
+
+	<!-- Formulario de Contacto -->
+	<section class="section-container relative z-10">
+		<div class="w-full max-w-4xl mx-auto">
+			<div class="text-center mb-12 animate-on-scroll">
+				<h2 class="section-title">¿Tienes un proyecto en mente?</h2>
+				<p class="section-subtitle">
+					Cuéntame sobre tu idea y trabajemos juntos
+				</p>
+			</div>
+
+			<div class="animate-on-scroll" style="animation-delay: 0.2s;">
+				<ContactForm client:load />
+			</div>
+		</div>
+	</section>
+</BaseLayout>

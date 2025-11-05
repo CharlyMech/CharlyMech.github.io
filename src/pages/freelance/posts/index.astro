@@ -1,0 +1,51 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+import PostCard from "@/components/PostCard.astro";
+
+const posts = await getCollection("posts");
+
+// Ordenar por fecha más reciente
+const sortedPosts = posts.sort(
+	(a, b) => b.data.postDate.getTime() - a.data.postDate.getTime()
+);
+---
+
+<BaseLayout pageTitle="Blog - Carlos Sánchez Recio">
+	<section class="section-container relative z-10">
+		<div class="w-full">
+			<div class="text-center mb-12 animate-on-scroll">
+				<h1 class="section-title">Blog</h1>
+				<p class="section-subtitle">
+					Artículos sobre desarrollo, tecnología y más
+				</p>
+			</div>
+
+			{
+				sortedPosts.length === 0 ? (
+					<div class="text-center py-16">
+						<p class="text-xl text-shade-600 dark:text-shade-400">
+							Aún no hay posts publicados. ¡Pronto habrá contenido aquí!
+						</p>
+					</div>
+				) : (
+					<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+						{sortedPosts.map((post, index) => (
+							<div
+								class="animate-on-scroll"
+								style={`animation-delay: ${index * 0.05}s;`}
+							>
+								<PostCard
+									title={post.data.title}
+									briefDescription={post.data.briefDescription}
+									postDate={post.data.postDate}
+									slug={post.slug}
+								/>
+							</div>
+						))}
+					</div>
+				)
+			}
+		</div>
+	</section>
+</BaseLayout>

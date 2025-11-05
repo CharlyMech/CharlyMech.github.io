@@ -1,0 +1,117 @@
+---
+import Card from "./Card.astro";
+import {
+	ArrowSquareOutIcon,
+	GithubLogoIcon,
+	RocketIcon,
+} from "@phosphor-icons/react/dist/ssr";
+
+interface Props {
+	title: string;
+	briefDescription: string;
+	imageUrl: string;
+	stack: string[];
+	status: "paused" | "developing" | "finished";
+	repoUrl: string;
+	deployUrl?: string;
+	slug: string;
+}
+
+const {
+	title,
+	briefDescription,
+	imageUrl,
+	stack,
+	status,
+	repoUrl,
+	deployUrl,
+	slug,
+} = Astro.props;
+
+const statusColors = {
+	paused:
+		"bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300",
+	developing:
+		"bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300",
+	finished:
+		"bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300",
+};
+
+const statusLabels = {
+	paused: "Pausado",
+	developing: "En desarrollo",
+	finished: "Finalizado",
+};
+---
+
+<Card
+	bgColor="var(--color-shade-800)"
+	textColor="var(--color-shade-50)"
+	isHoverable={true}
+	className="h-full flex flex-col"
+>
+	<a href={`/freelance/projects/${slug}`} class="block">
+		<div class="aspect-video w-full overflow-hidden rounded-t-lg mb-4">
+			<img
+				src={imageUrl}
+				alt={title}
+				class="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
+				loading="lazy"
+			/>
+		</div>
+	</a>
+
+	<div class="p-4 flex flex-col flex-1">
+		<div class="flex items-start justify-between mb-3">
+			<a href={`/freelance/projects/${slug}`}>
+				<h3
+					class="text-xl font-bold text-shade-900 dark:text-shade-50 hover:text-primary-400 dark:hover:text-primary-300 transition-colors"
+				>
+					{title}
+				</h3>
+			</a>
+			<span
+				class={`px-3 py-1 rounded-full text-xs font-medium ${statusColors[status]}`}
+			>
+				{statusLabels[status]}
+			</span>
+		</div>
+
+		<p class="text-shade-600 dark:text-shade-400 mb-4 flex-1">
+			{briefDescription}
+		</p>
+
+		<div class="flex flex-wrap gap-2 mb-4">
+			{
+				stack.map((tech) => (
+					<span class="bg-shade-200 dark:bg-shade-700 text-shade-800 dark:text-shade-200 px-2 py-1 rounded text-xs font-medium">
+						{tech}
+					</span>
+				))
+			}
+		</div>
+
+		<div class="flex gap-3">
+			<a
+				href={repoUrl}
+				target="_blank"
+				class="flex items-center gap-2 text-shade-700 dark:text-shade-300 hover:text-primary-400 dark:hover:text-primary-300 transition-colors"
+			>
+				<GithubLogoIcon size={20} />
+				<span class="text-sm">Código</span>
+			</a>
+			{
+				deployUrl && (
+					<a
+						href={deployUrl}
+						target="_blank"
+						class="flex items-center gap-2 text-shade-700 dark:text-shade-300 hover:text-primary-400 dark:hover:text-primary-300 transition-colors"
+					>
+						<RocketIcon size={20} />
+						<span class="text-sm">Demo</span>
+					</a>
+				)
+			}
+		</div>
+	</div>
+</Card>
