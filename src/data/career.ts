@@ -79,33 +79,21 @@ export const workExperience: CareerItem[] = [
 		],
 	},
 	{
-		title: "Desarrollador FullStack y Analista de datos",
-		company: "Perlatours",
-		period: "Jun 2025 - Sept 2025",
-		description:
-			"Desarrollo de aplicaciones web completas con Next.js en frontend, y python en backend. Implementación de sistemas de web scraping y data cleaning en arquitectura cloud.",
-		type: "work",
-		technologies: [
-			"Next.js",
-			"Python",
-			"Selenium",
-			"REST APIs",
-			"GraphQL",
-			"AWS",
-			"Huawei Cloud",
-			"Docker",
-			"Git",
-			"Github",
-		],
-	},
-	{
 		title: "Full Stack Developer",
 		company: "IT2B",
-		period: "Ene 2025 - May 2025",
+		period: "Ene 2025 - Oct 2025",
 		description:
 			"Desarrollo de aplicaciones web completas Angular (versiones 14 a 19 incluyendo migraciones) en frontend, y PHP Symfony en backend. Desarrollo de BackOffice enfocado a turismo y desarrollos personalizados para clientes.",
 		type: "work",
-		technologies: ["Angular", "PHP", "Symfony", "Git", "Github"],
+		technologies: [
+			"Angular",
+			"PHP",
+			"Symfony",
+			"Git",
+			"Github",
+			"REST APIs",
+			"AWS",
+		],
 	},
 	{
 		title: "Full Stack Developer (Prácticas)",
